@@ -5,11 +5,47 @@
     <title>Game of Life</title>
   </head>
   <body>
+    <header>
+      <div class="container">
+        <h1>Game Of Life</h1>
+      </div>
+    </header>
+
+    <section id="userInput">
+      <div class="container">
+        <form>
+          <input
+            id="boardWidth"
+            type="number"
+            name="width"
+            max="100"
+            placeholder="Board width"
+            required
+          />
+          <input
+            id="boardHeight"
+            type="number"
+            name="height"
+            max="100"
+            placeholder="Board height"
+            required
+          />
+          <button>Create Board</button>
+        </form>
+      </div>
+    </section>
     <div class="flex-container">
-      <section id="board"></section>
-      <section id="game-set">
-        <button id="play">play</button>
-        <button id="pause">pause</button>
+      <div class="container">
+        <section id="board"></section>
+      </div>
+
+      <section id="game-menu">
+        <div class="container">
+          <div class="actions hidden">
+            <button id="play">play</button>
+            <button id="pause">pause</button>
+          </div>
+        </div>
       </section>
     </div>
   </body>
