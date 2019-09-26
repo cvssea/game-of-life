@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  max-width: $containerMaxWidth;
+  margin: 0 auto;
+
+  .row {
+    width: 100%;
+    display: flex;
+
+    // generate column classes
+    @for $i from 1 through $gridcols {
+      .col-#{$i} {
+        width: (100% / $gridcols) * $i;
+        // border: 1px solid;
+      }
+    }
+  }
+}

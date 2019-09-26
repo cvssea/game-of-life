@@ -110,6 +110,14 @@ class GameOfLife {
     this.createBoard();
     this.firstGlider();
   }
+
+  reset() {
+    const extinctCells = this.cells.map((cell, idx) => {
+      const { x, y } = this.getCellCoord(idx);
+      return this.setCellState(x, y, '');
+    });
+    this.cells = extinctCells;
+  }
 }
 
 export default GameOfLife;

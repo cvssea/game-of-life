@@ -1,0 +1,13 @@
+#board {
+  // border: 1px solid;
+  div {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border: 1px solid color(dark);
+    // background-color: color(primary);
+    &.live {
+      background-color: color(text);
+    }
+  }
+}

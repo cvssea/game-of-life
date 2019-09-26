@@ -1,52 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
     <title>Game of Life</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <h1>Game Of Life</h1>
-      </div>
-    </header>
+    <div class="flex-column">
+      <div class="content">
+        <header>
+          <div class="container">
+            <h1><i class="fab fa-envira"></i> Game of Life</h1>
+          </div>
+        </header>
+        <main>
+          <div class="container">
+            <div class="row">
+              <div class="col-1">
+                <!-- Game Menu -->
+                <section id="menu">
+                  <!-- User Input -->
+                  <form class="menu__form">
+                    <h3>Board Setup</h3>
+                    <input
+                      id="boardWidth"
+                      type="number"
+                      name="width"
+                      min="10"
+                      max="100"
+                      placeholder="width (10 - 90)"
+                      required
+                    />
+                    <input
+                      id="boardHeight"
+                      type="number"
+                      name="height"
+                      min="10"
+                      max="60"
+                      placeholder="height (10 - 60)"
+                      required
+                    />
+                    <button class="btn">Create Board</button>
+                  </form>
 
-    <section id="userInput">
-      <div class="container">
-        <form>
-          <input
-            id="boardWidth"
-            type="number"
-            name="width"
-            max="100"
-            placeholder="Board width"
-            required
-          />
-          <input
-            id="boardHeight"
-            type="number"
-            name="height"
-            max="100"
-            placeholder="Board height"
-            required
-          />
-          <button>Create Board</button>
-        </form>
-      </div>
-    </section>
-    <div class="flex-container">
-      <div class="container">
-        <section id="board"></section>
-      </div>
+                  <!-- Actions -->
+                  <div class="menu__actions">
+                    <h3>Game Control</h3>
+                    <button id="play" class="btn" disabled>play</button>
+                    <button id="pause" class="btn" disabled>pause</button>
+                    <button id="reset" class="btn" disabled>reset</button>
+                  </div>
 
-      <section id="game-menu">
+                  <!-- Instructions -->
+                  <div class="menu__instructions">
+                    <h3 id="toggle">How to play?</h3>
+                    <ul id="instructions" class="hidden">
+                      <li>
+                        <p>
+                          <strong>Create your board</strong> by entering width
+                          and height
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Click on cells to
+                          <strong>configure the starting pattern</strong>
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Press the <strong>PLAY</strong> button and watch the
+                          game of life
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          During play you can <strong>revive</strong> any cell
+                          by clicking on it
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+              <div class="col-4 flex-start-center">
+                <!-- Board -->
+                <section id="board"></section>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer>
         <div class="container">
-          <div class="actions hidden">
-            <button id="play">play</button>
-            <button id="pause">pause</button>
+          <div class="row flex-between-center">
+            <div class="col-2">
+              <p>
+                Developed by
+                <a href="https://www.linkedin.com/in/cvarvaroi/">
+                  Constantin Varvaroi
+                </a>
+              </p>
+              <p>
+                Based on
+                <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">
+                  Conway's Game of Life
+                </a>
+              </p>
+
+              <p>
+                Instructions by
+                <a href="https://www.coderslab.ro/">
+                  &copy;CodersLab
+                </a>
+              </p>
+            </div>
+            <div class="col-2 footer__social">
+              <a href="https://github.com/cvssea/BUC_FER_S_03_Game_of_Life_EN">
+                <i class="fas fa-code-branch"></i>
+              </a>
+              <a href="https://github.com/cvssea">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/cvarvaroi/">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   </body>
 </html>

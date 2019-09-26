@@ -1,0 +1,68 @@
+html,
+input {
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: color(text);
+}
+
+h1 {
+  font-family: 'Bad Script', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-start-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  background-color: color(secondary);
+  border: none;
+  color: color(text);
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: color(text);
+    color: color(secondary);
+  }
+
+  &:active {
+    background-color: color(dark);
+  }
+
+  &:disabled {
+    color: color(primary);
+  }
+}
+
+.hidden {
+  display: none !important;
+}

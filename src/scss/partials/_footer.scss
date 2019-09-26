@@ -1,0 +1,33 @@
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 15px 0;
+  background-color: complement(color(dark));
+
+  a {
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: color(secondary);
+
+    &:hover {
+      color: color(primary);
+    } 
+  }
+
+  p {
+    font-family: 'Bad Script', sans-serif; 
+    line-height: 1.5em;
+    color: color(secondary);
+  }
+
+  .footer__social {
+    text-align: right;
+    
+    a {
+      text-decoration: none;
+      font-size: 2em;
+      padding: 0 15px;
+    }
+  }
+
+  
+}

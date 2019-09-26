@@ -1,0 +1,4 @@
+// returns color based on identifier
+@function color($color) {
+  @return map_get($palette, $color);
+}
