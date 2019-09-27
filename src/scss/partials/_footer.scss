@@ -14,13 +14,15 @@ footer {
   }
 
   p {
-    font-family: 'Bad Script', sans-serif; 
-    line-height: 1.5em;
+    font-family: 'Bad Script', sans-serif;
+    text-align: center;
+    line-height: 1.6em;
     color: color(secondary);
   }
 
   .footer__social {
-    text-align: right;
+    text-align: center;
+    margin-top: 10px;
     
     a {
       text-decoration: none;
@@ -28,6 +30,4 @@ footer {
       padding: 0 15px;
     }
   }
-
-  
 }

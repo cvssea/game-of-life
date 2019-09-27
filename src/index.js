@@ -14,13 +14,14 @@ const reset = document.getElementById('reset');
 // initialize globals
 let game;
 let interval;
+// ToDo - allow user to input game speed
 
-// clicking on pattern buttons generates specific pattern
+// generates predefined pattern
 [puls, gun, inf].forEach(btn => {
   btn.addEventListener('click', () => {
-    evaluateBoard();
-
     const pattern = btn.dataset.pattern;
+    evaluateBoard(pattern);
+
     game = new GameOfLife(90, 60);
     game.generatePattern(patterns[pattern]);
 
@@ -33,7 +34,7 @@ play.addEventListener('click', () => {
   pause.disabled = false;
   reset.disabled = false;
 
-  interval = setInterval(() => game.printNextGeneration(), 250);
+  interval = setInterval(() => game.printNextGeneration(), 100);
 
   // reset
   reset.addEventListener('click', () => {
@@ -73,4 +74,34 @@ document.querySelector('form').addEventListener('submit', e => {
 // show/hide instructions
 document.getElementById('toggle').addEventListener('click', () => {
   document.getElementById('instructions').classList.toggle('hidden');
+});
+
+const widthInput = document.getElementById('boardWidth');
+
+function setBoardMaxWidth() {
+  const containerWidth = parseInt(
+    document.querySelector('.container').clientWidth
+  );
+  const boardMaxWidth = (containerWidth - (containerWidth % 100)) / 10;
+  if (boardMaxWidth <= 90) {
+    widthInput.placeholder = `width (10 - ${boardMaxWidth})`;
+    widthInput.max = boardMaxWidth;
+  } else {
+    widthInput.placeholder = 'width (10 - 90)';
+    widthInput.max = 90;
+  }
+  return boardMaxWidth;
+}
+
+const media = window.matchMedia('(min-width: 768px) and (max-width: 1015px)');
+
+// change input placeholder and min/max values
+media.addListener(media => {
+  if (media.matches) {
+    setBoardMaxWidth();
+  }
+});
+window.addEventListener('load', () => setBoardMaxWidth());
+window.addEventListener('resize', () => {
+  const boardMaxWidth = setBoardMaxWidth();
 });

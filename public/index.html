@@ -17,11 +17,28 @@
       <div class="content">
         <header>
           <div class="container">
-            <div class="row flex-center-center">
-              <div class="col-1">
-                <h1><i class="fab fa-envira"></i> Game of Life</h1>
+            <div class="row flex-center-end">
+              <div class="col-8 col-lg-2">
+                <a href="/">
+                  <h1><i class="fab fa-envira"></i> Game of Life</h1>
+                </a>
               </div>
-              <div class="col-4">
+              <div id="description" class="col-8">
+                <p>
+                  This is an interactive animation game based on the cellular
+                  automaton example created in 1970 by British mathematician
+                  John Conway.
+                </p>
+                <p>
+                  In order to play the game please use a device with a screen
+                  <strong> widht of at least 768px</strong>
+                </p>
+                <p>Tap <strong>PULSAR</strong> below to view an example</p>
+                <p>
+                  Tap the board to <strong>play/pause</strong> the animation
+                </p>
+              </div>
+              <div class="col-8 col-lg-6">
                 <h2>Famous Patterns</h2>
                 <div id="patterns">
                   <button id="pulsar" data-pattern="pulsar" class="btn">
@@ -41,7 +58,7 @@
         <main>
           <div class="container">
             <div class="row">
-              <div class="col-1">
+              <div class="col-8 col-lg-2">
                 <!-- Game Menu -->
                 <section id="menu">
                   <!-- User Input -->
@@ -52,7 +69,7 @@
                       type="number"
                       name="width"
                       min="10"
-                      max="100"
+                      max="90"
                       placeholder="width (10 - 90)"
                       required
                     />
@@ -115,7 +132,7 @@
                   </div>
                 </section>
               </div>
-              <div class="col-4 flex-start-center">
+              <div class="col-8 col-lg-6 flex-center-center">
                 <!-- Board -->
                 <section id="board"></section>
               </div>
@@ -126,35 +143,41 @@
       <footer>
         <div class="container">
           <div class="row flex-between-center">
-            <div class="col-2">
+            <div class="col-8 col-sm-4">
               <p>
                 Developed by
-                <a href="https://www.linkedin.com/in/cvarvaroi/">
+                <a
+                  href="https://www.linkedin.com/in/cvarvaroi/"
+                  target="_blank"
+                >
                   Constantin Varvaroi
                 </a>
               </p>
               <p>
                 Based on
-                <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">
+                <a
+                  href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+                  target="_blank"
+                >
                   Conway's Game of Life
                 </a>
               </p>
 
               <p>
                 Instructions by
-                <a href="https://www.coderslab.ro/">
+                <a href="https://www.coderslab.ro/" target="_blank">
                   &copy;CodersLab
                 </a>
               </p>
             </div>
-            <div class="col-2 footer__social">
-              <a href="https://github.com/cvssea/BUC_FER_S_03_Game_of_Life_EN">
+            <div class="col-8 col-sm-4 footer__social">
+              <a href="https://github.com/cvssea/game-of-life" target="_blank">
                 <i class="fas fa-code-branch"></i>
               </a>
-              <a href="https://github.com/cvssea">
+              <a href="https://github.com/cvssea" target="_blank">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/cvarvaroi/">
+              <a href="https://www.linkedin.com/in/cvarvaroi/" target="_blank">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>

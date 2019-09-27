@@ -1,27 +1,97 @@
 header {
-  padding: 20px;
-  .col-1 {
-    min-width: 240px;
-  }
+  padding: 20px 0;
+  
+  h1 {
+    border-bottom: 1px solid color(dark);
+    // text-align: center;
+    padding-bottom: 10px;
 
-  i {
-    font-size: 1.2em;
-    color: color(primary);
+    i {
+      font-size: 1.2em;
+      color: color(primary);
+      transition: color 1s ease-out;
+    }
+
+    @include desktop {
+      &:hover i {
+        color: complement(color(primary));
+      }
+    }
   }
 
   h2 {
+    display: none;
     text-align: center;
+  }
+
+  @include tablet {
+    h1 {
+      text-align: center;
+    }
+
+    h2 {
+      display: block;
+      line-height: 2em;
+    }
+  }
+
+  @include desktop {
+    h1 {
+      border: none;
+      text-align: left;
+      padding: 0;
+    }
+  }
+}
+
+#description {
+  padding: 10px 5px;
+  border-bottom: 1px solid color(dark);
+  p {
+    background-color: color(primary);
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.5em;
+    font-size: 1.1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include tablet {
+    display: none;
   }
 }
 
 #patterns {
-  display: flex;
-  justify-content: flex-end;
+  #gun,
+  #infinite {
+    display: none;
+  }
 
-  .btn {
-    margin-right: 15px;
-    &:last-child {
-      margin-right: 0;
+  #pulsar {
+    margin-top: 10px;
+  }
+
+  @include tablet {
+    display: flex;
+    justify-content: center;
+
+    #gun,
+    #infinite {
+      display: block;
+    }
+
+    #pulsar {
+      margin-top: 0;
+    }
+
+    .btn {
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+const path = require('path');
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,6 +11,12 @@ module.exports = merge(common, {
       template: './public/index.html',
     }),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, 'src'),
+    compress: true,
+    port: 3000,
+    host: '192.168.100.3',
+  },
   module: {
     rules: [
       {

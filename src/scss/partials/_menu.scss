@@ -1,36 +1,54 @@
 #menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 240px;
-  // padding: 0.5em;
+  display: none;
 
-  .menu__form,
-  .menu__actions,
-  .menu__instructions {
+  @include tablet {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: color(primary);
+    justify-content: space-around;
+    align-items: flex-start;
+
+    .menu__form,
+    .menu__actions,
+    .menu__instructions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: color(primary);
+    }
+
+    .menu__instructions {
+      margin-right: 0;
+    }
+
+    h3 {
+      padding: 15px 0;
+    }
   }
 
-  h3 {
-    padding: 15px 0;
+  @include desktop {
+    flex-direction: column;
+    max-width: 240px;
+    .menu__form,
+    .menu__actions,
+    .menu__instructions {
+      margin-right: 0;
+    }
   }
 }
 
-.menu__form input {
-  width: 100%;
-  background-color: #fff;
-  font-size: 1em;
-  padding: 10px 0 10px 20px;
-  border: none;
-  outline: none;
-  &:nth-of-type(1) {
-    border-bottom: 1px solid color(dark);
+.menu__form {
+  input {
+    width: 100%;
+    font-size: 1em;
+    padding: 7px 0 7px 20px;
+    border: none;
+    outline: none;
+    &:nth-of-type(1) {
+      border-bottom: 1px solid color(dark);
+    }
   }
 }
 
@@ -42,34 +60,38 @@
 }
 
 .menu__instructions {
-  #toggle {
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      background-color: color(dark);
-      color: color(secondary);
-    }
-  }
-
-  ul {
-    background-color: color(secondary);
-    transition: all 0.5s ease-in;
-
-    li {
-      border-bottom: 1px solid color(dark);
-
-      &:last-child {
-        border-bottom: none;
-      }
-
+  @include tablet {
+    #toggle {
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
       &:hover {
-        background-color: color(primary);
+        background-color: color(dark);
+        color: color(secondary);
       }
+    }
 
-      p {
-        padding: 5px 10px;
-        line-height: 1.5em;
+    ul {
+      background-color: color(secondary);
+      text-align: center;
+      width: 100%;
+
+      li {
+        width: 100%;
+        border-bottom: 1px solid color(dark);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: color(primary);
+        }
+
+        p {
+          padding: 5px 10px;
+          line-height: 1.5em;
+        }
       }
     }
   }

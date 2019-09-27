@@ -1,17 +1,36 @@
 .container {
-  // width: 100%;
-  width: $containerMaxWidth;
   margin: 0 auto;
+  width: 90%;
+
+  @include desktop {
+    width: $containerMaxWidth;
+  }
 
   .row {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 
     // generate column classes
     @for $i from 1 through $gridcols {
       .col-#{$i} {
         width: (100% / $gridcols) * $i;
-        // border: 1px solid;
+      }
+    }
+
+    @include tablet {
+      @for $i from 1 through $gridcols {
+        .col-sm-#{$i} {
+          width: (100% / $gridcols) * $i;
+        }
+      }
+    }
+
+    @include desktop {
+      @for $i from 1 through $gridcols {
+        .col-lg-#{$i} {
+          width: (100% / $gridcols) * $i;
+        }
       }
     }
   }
