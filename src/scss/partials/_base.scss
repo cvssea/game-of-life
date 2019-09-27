@@ -4,6 +4,10 @@ input {
   color: color(text);
 }
 
+main {
+  margin-bottom: 30px;
+}
+
 h1 {
   font-family: 'Bad Script', sans-serif;
 }
@@ -11,7 +15,6 @@ h1 {
 ul {
   list-style-type: none;
 }
-
 
 .flex-column {
   display: flex;
@@ -33,6 +36,12 @@ ul {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {

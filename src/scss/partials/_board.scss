@@ -1,11 +1,10 @@
 #board {
-  // border: 1px solid;
   div {
     float: left;
     width: 10px;
     height: 10px;
-    border: 1px solid color(dark);
-    // background-color: color(primary);
+    border: 1px solid color(secondary);
+    // transition: all .2s ease-in-out;
     &.live {
       background-color: color(text);
     }

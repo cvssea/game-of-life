@@ -39,12 +39,12 @@ class GameOfLife {
     return cell;
   }
 
-  firstGlider() {
-    this.setCellState(6, 3, 'live');
-    this.setCellState(7, 4, 'live');
-    this.setCellState(7, 5, 'live');
-    this.setCellState(6, 5, 'live');
-    this.setCellState(5, 5, 'live');
+  generatePattern(pattern) {
+    this.createBoard();
+    pattern.forEach(idx => {
+      const { x, y } = this.getCellCoord(idx);
+      this.setCellState(x, y, 'live');
+    });
   }
 
   getCellNeighbours(x, y) {
@@ -108,7 +108,6 @@ class GameOfLife {
 
   init() {
     this.createBoard();
-    this.firstGlider();
   }
 
   reset() {

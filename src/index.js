@@ -1,61 +1,76 @@
 import GameOfLife from './app/GameOfLife';
+import patterns from './app/patterns';
+import { evaluateBoard } from './app/utils/evaluateBoard';
 import './scss/main.scss';
 
-function createEmptyBoard() {
-  const section = document.createElement('section');
-  section.id = 'board';
-  return section;
-}
+// buttons
+const puls = document.getElementById('pulsar');
+const gun = document.getElementById('gun');
+const inf = document.getElementById('infinite');
+const play = document.getElementById('play');
+const pause = document.getElementById('pause');
+const reset = document.getElementById('reset');
 
-// show/hide instructions
-document.getElementById('toggle').addEventListener('click', () => {
-  document.getElementById('instructions').classList.toggle('hidden');
+// initialize globals
+let game;
+let interval;
+
+// clicking on pattern buttons generates specific pattern
+[puls, gun, inf].forEach(btn => {
+  btn.addEventListener('click', () => {
+    evaluateBoard();
+
+    const pattern = btn.dataset.pattern;
+    game = new GameOfLife(90, 60);
+    game.generatePattern(patterns[pattern]);
+
+    interval && clearInterval(interval);
+    play.disabled = false;
+  });
 });
 
+play.addEventListener('click', () => {
+  pause.disabled = false;
+  reset.disabled = false;
+
+  interval = setInterval(() => game.printNextGeneration(), 250);
+
+  // reset
+  reset.addEventListener('click', () => {
+    clearInterval(interval);
+    game && game.reset();
+  });
+
+  // pause
+  pause.addEventListener('click', () => {
+    clearInterval(interval);
+  });
+});
+
+// form submit logic
 document.querySelector('form').addEventListener('submit', e => {
   e.preventDefault();
-
-  // clear existing board on re-submitting board dimensions
-  const board = document.getElementById('board');
-  const boardParent = board.parentElement;
-  // remove board if initialized
-  if (board.children.length) {
-    board.remove();
-    boardParent.appendChild(createEmptyBoard());
-  }
+  interval && clearInterval(interval);
 
   const width = document.getElementById('boardWidth');
   const height = document.getElementById('boardHeight');
-  const game = new GameOfLife(parseInt(width.value), parseInt(height.value));
-  game.init();
+
+  // remove board if it already exists
+  evaluateBoard();
+
+  // good to go - initialize empty game
+  game = new GameOfLife(parseInt(width.value), parseInt(height.value));
+  game && game.init();
 
   // clear form
   width.value = '';
   height.value = '';
 
-  // buttons
-  const play = document.getElementById('play');
-  const pause = document.getElementById('pause');
-  const reset = document.getElementById('reset');
   // enable play button
   play.disabled = false;
+});
 
-  play.addEventListener('click', () => {
-    // enable play and reset buttons
-    pause.disabled = false;
-    reset.disabled = false;
-
-    const interval = setInterval(() => game.printNextGeneration(), 100);
-
-    // reset
-    reset.addEventListener('click', () => {
-      clearInterval(interval);
-      game.reset();
-    });
-
-    // pause
-    pause.addEventListener('click', () => {
-      clearInterval(interval);
-    });
-  });
+// show/hide instructions
+document.getElementById('toggle').addEventListener('click', () => {
+  document.getElementById('instructions').classList.toggle('hidden');
 });

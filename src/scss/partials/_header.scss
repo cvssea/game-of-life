@@ -1,10 +1,27 @@
 header {
   padding: 20px;
-  h1 {
-    vertical-align: middle;
+  .col-1 {
+    min-width: 240px;
   }
+
   i {
     font-size: 1.2em;
     color: color(primary);
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+#patterns {
+  display: flex;
+  justify-content: flex-end;
+
+  .btn {
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }

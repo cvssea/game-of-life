@@ -17,7 +17,25 @@
       <div class="content">
         <header>
           <div class="container">
-            <h1><i class="fab fa-envira"></i> Game of Life</h1>
+            <div class="row flex-center-center">
+              <div class="col-1">
+                <h1><i class="fab fa-envira"></i> Game of Life</h1>
+              </div>
+              <div class="col-4">
+                <h2>Famous Patterns</h2>
+                <div id="patterns">
+                  <button id="pulsar" data-pattern="pulsar" class="btn">
+                    pulsar
+                  </button>
+                  <button id="gun" data-pattern="gosperGliderGun" class="btn">
+                    gosper glider gun
+                  </button>
+                  <button id="infinite" data-pattern="infinite" class="btn">
+                    infinite
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </header>
         <main>
@@ -84,6 +102,13 @@
                         <p>
                           During play you can <strong>revive</strong> any cell
                           by clicking on it
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          You can also
+                          <strong>try the predefined patterns</strong> listed on
+                          top
                         </p>
                       </li>
                     </ul>
