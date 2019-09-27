@@ -3,7 +3,8 @@
   width: 90%;
 
   @include desktop {
-    width: $containerMaxWidth;
+    width: 100%;
+    max-width: $containerMaxWidth;
   }
 
   .row {

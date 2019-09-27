@@ -1,3 +1,5 @@
+import { toggleClass } from './utils/toggleClass';
+
 class GameOfLife {
   constructor(boardWidth, boardHeight) {
     this.width = boardWidth;
@@ -6,10 +8,14 @@ class GameOfLife {
     this.cells = [];
   }
 
-  createBoard() {
+  setWidth(width) {
+    this.width = width;
+  }
+
+  createBoard(x = 10, y = 10) {
     // set board dimensions
-    this.board.style.width = `${this.width * 10}px`;
-    this.board.style.height = `${this.height * 10}px`;
+    this.board.style.width = `${this.width * x}px`;
+    this.board.style.height = `${this.height * y}px`;
 
     // generate cells
     const numCells = this.width * this.height;
@@ -21,9 +27,7 @@ class GameOfLife {
 
     // add event listener to cells
     this.cells.forEach(cell => {
-      cell.addEventListener('click', function() {
-        this.classList.toggle('live');
-      });
+      cell.addEventListener('click', toggleClass);
     });
   }
 
@@ -45,6 +49,17 @@ class GameOfLife {
       const { x, y } = this.getCellCoord(idx);
       this.setCellState(x, y, 'live');
     });
+  }
+
+  generateMobilePulsar(pattern, interval) {
+    this.createBoard(20, 20);
+    pattern.forEach(idx => {
+      const { x, y } = this.getCellCoord(idx);
+      this.setCellState(x, y, 'live');
+    });
+
+    //remove event listeners
+    this.cells.forEach(cell => cell.removeEventListener('click', toggleClass));
   }
 
   getCellNeighbours(x, y) {

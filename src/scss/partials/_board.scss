@@ -1,12 +1,20 @@
 #board {
   div {
     float: left;
-    width: 10px;
-    height: 10px;
+    width: 5%;
+    height: 5%;
     border: 1px solid color(secondary);
-    // transition: all .2s ease-in-out;
+
+    @include tablet {
+      width: 10px;
+      height: 10px;
+      
+      // transition: all .2s ease-in-out;
+    }
+
     &.live {
       background-color: color(text);
     }
   }
 }
+

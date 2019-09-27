@@ -80,8 +80,21 @@
         width: 100%;
         border-bottom: 1px solid color(dark);
 
-        &:last-child {
+        &:nth-last-child(2) {
           border-bottom: none;
+
+          @include desktop {
+            border-bottom: 1px solid color(dark);
+          }
+        }
+
+        &:last-child {
+          display: none;
+
+          @include desktop {
+            display: block;
+            border-bottom: none;
+          }
         }
 
         &:hover {

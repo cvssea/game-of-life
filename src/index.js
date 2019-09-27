@@ -14,6 +14,7 @@ const reset = document.getElementById('reset');
 // initialize globals
 let game;
 let interval;
+let boardMaxWidth;
 // ToDo - allow user to input game speed
 
 // generates predefined pattern
@@ -22,11 +23,16 @@ let interval;
     const pattern = btn.dataset.pattern;
     evaluateBoard(pattern);
 
-    game = new GameOfLife(90, 60);
-    game.generatePattern(patterns[pattern]);
-
-    interval && clearInterval(interval);
-    play.disabled = false;
+    if (window.innerWidth < 768) {
+      game = new GameOfLife(20, 20);
+      game.generateMobilePulsar(patterns.mobilePulsar, interval);
+      puls.style.display = 'none';
+    } else {
+      game = new GameOfLife(90, 60);
+      game.generatePattern(patterns[pattern]);
+      interval && clearInterval(interval);
+      play.disabled = false;
+    }
   });
 });
 
@@ -40,12 +46,15 @@ play.addEventListener('click', () => {
   reset.addEventListener('click', () => {
     clearInterval(interval);
     game && game.reset();
+    play.disabled = false;
   });
 
   // pause
   pause.addEventListener('click', () => {
     clearInterval(interval);
+    play.disabled = false;
   });
+  play.disabled = true;
 });
 
 // form submit logic
@@ -77,31 +86,64 @@ document.getElementById('toggle').addEventListener('click', () => {
 });
 
 const widthInput = document.getElementById('boardWidth');
+const media = window.matchMedia('(min-width: 768px) and (max-width: 1015px)');
 
 function setBoardMaxWidth() {
   const containerWidth = parseInt(
     document.querySelector('.container').clientWidth
   );
-  const boardMaxWidth = (containerWidth - (containerWidth % 100)) / 10;
+  boardMaxWidth = (containerWidth - (containerWidth % 100)) / 10;
+
+  // updates info on client
   if (boardMaxWidth <= 90) {
     widthInput.placeholder = `width (10 - ${boardMaxWidth})`;
     widthInput.max = boardMaxWidth;
   } else {
     widthInput.placeholder = 'width (10 - 90)';
     widthInput.max = 90;
+    boardMaxWidth = 90;
   }
-  return boardMaxWidth;
+
+  // while resizing / refreshing page
+  // if game, set null, redraw board
+  if (game && boardMaxWidth < 90) {
+    game = null;
+    evaluateBoard();
+  }
 }
 
-const media = window.matchMedia('(min-width: 768px) and (max-width: 1015px)');
-
 // change input placeholder and min/max values
-media.addListener(media => {
-  if (media.matches) {
-    setBoardMaxWidth();
-  }
+window.addEventListener('load', () => {
+  setBoardMaxWidth();
+  media.addListener(media => {
+    media.matches && setBoardMaxWidth();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      if (game) {
+        game.reset();
+        interval && clearInterval(interval);
+      }
+
+      evaluateBoard();
+      setBoardMaxWidth();
+    }
+  });
 });
-window.addEventListener('load', () => setBoardMaxWidth());
-window.addEventListener('resize', () => {
-  const boardMaxWidth = setBoardMaxWidth();
-});
+
+// on screens < 768
+// add touch listener to board
+if (window.innerWidth < 768) {
+  document
+    .getElementById('board')
+    .addEventListener('touchend', function touch() {
+      if (game) {
+        if (interval) {
+          clearInterval(interval);
+          interval = null;
+        } else {
+          interval = setInterval(() => game.printNextGeneration(), 100);
+        }
+      }
+    });
+}

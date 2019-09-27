@@ -3,7 +3,6 @@ header {
   
   h1 {
     border-bottom: 1px solid color(dark);
-    // text-align: center;
     padding-bottom: 10px;
 
     i {
@@ -28,11 +27,6 @@ header {
     h1 {
       text-align: center;
     }
-
-    h2 {
-      display: block;
-      line-height: 2em;
-    }
   }
 
   @include desktop {
@@ -40,6 +34,11 @@ header {
       border: none;
       text-align: left;
       padding: 0;
+    }
+
+    h2 {
+      display: block;
+      line-height: 2em;
     }
   }
 }
@@ -75,7 +74,12 @@ header {
   }
 
   @include tablet {
+    display: none;
+  }
+
+  @include desktop {
     display: flex;
+    // flex-wrap: wrap;
     justify-content: center;
 
     #gun,
