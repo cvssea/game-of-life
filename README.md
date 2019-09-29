@@ -14,7 +14,7 @@ It has 3 breakpoints: mobile, tablet and desktop, each displaying different comp
 - webpack
 - SASS
 - GIT
+---
+**Want to clone this repository? You have `npm start` and `npm run build` as predefined scripts**
 
-** Want to clone this repository? You have `npm start` and `npm run build` as predefined scripts **
-
-** App is deployed https://cvssea.github.io/game-of-life/ **
+**App is deployed https://cvssea.github.io/game-of-life/**
