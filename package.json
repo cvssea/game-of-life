@@ -1,5 +1,5 @@
 {
-  "name": "buc_fer_s_03_furry_game_en",
+  "name": "game-of-life",
   "version": "1.0.0",
   "description": "JavaScript Game",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cvssea/BUC_FER_S_03_Furry_Game_EN.git"
+    "url": "git+https://github.com/cvssea/game-of-life.git"
   },
   "author": "CV",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cvssea/BUC_FER_S_03_Furry_Game_EN/issues"
+    "url": "https://github.com/cvssea/game-of-life/issues"
   },
-  "homepage": "https://github.com/cvssea/BUC_FER_S_03_Furry_Game_EN#readme",
+  "homepage": "https://github.com/cvssea/game-of-life#readme",
   "devDependencies": {
     "autoprefixer": "^9.6.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -35,9 +35,7 @@
     "webpack-dev-server": "^3.8.1",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {
-    "url-loader": "^2.1.0"
-  },
+  "dependencies": {},
   "browserslist": [
     "defaults",
     "not ie < 11",
