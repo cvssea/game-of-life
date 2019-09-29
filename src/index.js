@@ -17,23 +17,42 @@ let interval;
 let boardMaxWidth;
 // ToDo - allow user to input game speed
 
-// generates predefined pattern
-[puls, gun, inf].forEach(btn => {
-  btn.addEventListener('click', () => {
-    const pattern = btn.dataset.pattern;
-    evaluateBoard(pattern);
+function patterEventCb() {
+  const pattern = this.dataset.pattern;
+  evaluateBoard(pattern);
 
-    if (window.innerWidth < 768) {
-      game = new GameOfLife(20, 20);
-      game.generateMobilePulsar(patterns.mobilePulsar, interval);
-      puls.style.display = 'none';
-    } else {
-      game = new GameOfLife(90, 60);
-      game.generatePattern(patterns[pattern]);
-      interval && clearInterval(interval);
-      play.disabled = false;
+  if (window.innerWidth < 768) {
+    game = new GameOfLife(20, 20);
+    game.generateMobilePulsar(patterns.mobilePulsar, interval);
+    puls.style.display = 'none';
+  } else {
+    game = new GameOfLife(90, 60);
+    game.generatePattern(patterns[pattern]);
+    interval && clearInterval(interval);
+    play.disabled = false;
+  }
+}
+
+puls.addEventListener('touchend', patterEventCb);
+
+// on screens < 768
+// add touch listener to board
+if (window.innerWidth < 768) {
+  document.getElementById('board').addEventListener('touchend', () => {
+    if (game) {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      } else {
+        interval = setInterval(() => game.printNextGeneration(), 100);
+      }
     }
   });
+}
+
+// generates predefined pattern
+[puls, gun, inf].forEach(btn => {
+  btn.addEventListener('click', patterEventCb);
 });
 
 play.addEventListener('click', () => {
@@ -130,20 +149,3 @@ window.addEventListener('load', () => {
     }
   });
 });
-
-// on screens < 768
-// add touch listener to board
-if (window.innerWidth < 768) {
-  document
-    .getElementById('board')
-    .addEventListener('touchend', function touch() {
-      if (game) {
-        if (interval) {
-          clearInterval(interval);
-          interval = null;
-        } else {
-          interval = setInterval(() => game.printNextGeneration(), 100);
-        }
-      }
-    });
-}
